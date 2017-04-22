@@ -1,16 +1,18 @@
-# Cycle Number
+# Cycle Statistics
 This module would be useful for statistics.
 
 ## Example
 
 ```js
-const cycle = new CycleNumber
-cycle.max(2)    // => 2
-cycle.max(1)    // => 2
-cycle.max(3)    // => 3
-cycle.restart() // => 3
-cycle           // => 3
-cycle.max(2)    // => 2
-cycle.max(1)    // => 2
-cycle.max(3)    // => 3
+const CycleStatistics = require('cycle-statistics')
+
+const statistics = new CycleStatistics.Max
+statistics.push(2)      // => 2
+statistics.push(1)      // => 2
+statistics.push(3)      // => 3
+statistics.restart()    // => 3
++statistics             // => 3
+statistics.push(2)      // => 2
+statistics.push(1)      // => 2
+statistics.push(3)      // => 3
 ```
