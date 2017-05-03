@@ -100,4 +100,17 @@ describe('CycleStatistics.Duration()', () => {
     await sleep(10)
     assert('number' === typeof duration.step())
   })
+  it('should could be merged', async function() {
+    const srcValue = duration.valueOf()
+    const another = new Statistics.Duration
+    await sleep(10)
+    another.step()
+    await sleep(10)
+    another.step()
+    await sleep(10)
+    another.step()
+    duration.merge(another)
+    assert.strictEqual([...duration].length, 2)
+    assert.strictEqual(duration.valueOf(), srcValue + another)
+  })
 })
