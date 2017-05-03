@@ -71,3 +71,33 @@ describe('CycleStatistics.Min()', () => {
     assert.equal(statistics.push(0), -1)
   })
 })
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  })
+}
+describe('CycleStatistics.Duration()', () => {
+  const duration = new Statistics.Duration
+  it('should able to be called', async function() {
+    assert.strictEqual(duration.step(), 0)
+    await sleep(10)
+    assert('number' === typeof duration.step())
+    await sleep(10)
+    assert('number' === typeof duration.step())
+  })
+  it('should could covert to a number', () => {
+    assert('number' === typeof (+duration))
+  })
+  it('should be a iterator', () => {
+    assert([...duration])
+  })
+  it('should be changed immediately after #restart()', async function() {
+    duration.restart()
+    assert.strictEqual(+duration, 0)
+    await sleep(10)
+    assert.strictEqual(duration.step(), 0)
+    await sleep(10)
+    assert('number' === typeof duration.step())
+  })
+})
