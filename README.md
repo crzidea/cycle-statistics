@@ -1,4 +1,7 @@
 # Cycle Statistics
+
+[![Build Status](https://travis-ci.org/crzidea/cycle-statistics.svg?branch=master)](https://travis-ci.org/crzidea/cycle-statistics)
+
 This module would be useful for statistics.
 
 ## Example
